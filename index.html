@@ -141,14 +141,37 @@
 
         function gerarHorarios() {
             const horarios = document.querySelectorAll('.time-grid .col');
+            const horarioAtual = new Date();
+
+            const listaHorarios = [];
 
             horarios.forEach(function (horario) {
-                const hora = Math.floor(Math.random() * 24).toString().padStart(2, '0');
-                const minuto = Math.floor(Math.random() * 60).toString().padStart(2, '0');
-                const novoHorario = hora + ':' + minuto;
+                const horaAtual = horarioAtual.getHours();
+                const minutoAtual = horarioAtual.getMinutes();
+                let hora = getRandomInt(horaAtual, horaAtual + 1);
+                let minuto = getRandomInt(minutoAtual, 59); 
 
-                horario.textContent = novoHorario;
+                if (minuto === 60) {
+                    hora += 1;
+                    minuto = 0;
+                }
+
+                const novoHorario = `${hora.toString().padStart(2, '0')}:${minuto.toString().padStart(2, '0')}`;
+
+                listaHorarios.push(novoHorario);
             });
+
+            const horariosUnicos = [...new Set(listaHorarios)];
+
+            horariosUnicos.sort(); 
+
+            horarios.forEach(function (horario, index) {
+                horario.textContent = horariosUnicos[index];
+            });
+        }
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
         function showOverlay() {
