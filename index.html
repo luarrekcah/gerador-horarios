@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Horários</title>
+
+    <style>
+        body {
+            background-color: #001f3f;
+        }
+
+        .container-main {
+            background-color: #001a33;
+            padding: 40px;
+            border-radius: 5px;
+            color: #fff;
+            width: 400px;
+        }
+
+        .container-main img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .container-main h1,
+        h2 {
+            color: #fff;
+        }
+
+        .container-main p.bold {
+            font-weight: bold;
+        }
+
+        .time-grid {
+            background-color: #00519c;
+            padding: 25px;
+            border-radius: 20px;
+        }
+
+        .time-grid .col {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #overlayContainer {
+            position: relative;
+            padding: 40px;
+            display: none;
+        }
+
+        #overlayElement {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        #statusElement {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 24px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="container-main d-flex flex-column align-items-center text-center">
+            <img src="" alt="Logo do Site">
+            <b>SIGAM OS HORÁRIOS PAGANTES QUE NÃO TEM ERRO!!!</b>
+            <p>HORÁRIOS GERADOS!!!</p>
+            <hr>
+            <div class="time-grid">
+                <div id="overlayContainer">
+                    <div id="overlayElement"></div>
+                    <div id="statusElement"></div>
+                </div>
+                <div id="horarios">
+                    <div class="row">
+                        <div class="col">15:24</div>
+                        <div class="col">16:09</div>
+                        <div class="col">16:04</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">15:37</div>
+                        <div class="col">16:17</div>
+                        <div class="col">16:22</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">15:44</div>
+                        <div class="col">16:26</div>
+                        <div class="col">16:36</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">15:59</div>
+                        <div class="col">16:44</div>
+                        <div class="col">16:44</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">16:03</div>
+                        <div class="col">16:56</div>
+                        <div class="col">16:59</div>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+
+            <p>JOGUEM NOS HORÁRIOS 👆🏼</p>
+            <p>FORTUNE TIGER OU OX</p>
+
+            <button class="btn btn-success" onclick="main()">GERAR HORÁRIOS</button>
+            <p></p>
+            <a class="btn btn-primary" href="https://brcoco.win/yznc8jai0">CADASTRE-SE</a>
+            <hr>
+            <p class="bold">APROVEITEM QUE A PLATAFORMA TÁ PAGANDO 90% A MAIS!</p>
+            <p>QUEM JÁ TEM CONTA JOGA NO 4G!!!</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <script>
+        const overlayContainer = document.getElementById('overlayContainer');
+        const overlayElement = document.getElementById('overlayElement');
+        const statusElement = document.getElementById('statusElement');
+        const horarios = document.getElementById('horarios');
+
+        function gerarHorarios() {
+            const horarios = document.querySelectorAll('.time-grid .col');
+
+            horarios.forEach(function (horario) {
+                const hora = Math.floor(Math.random() * 24).toString().padStart(2, '0');
+                const minuto = Math.floor(Math.random() * 60).toString().padStart(2, '0');
+                const novoHorario = hora + ':' + minuto;
+
+                horario.textContent = novoHorario;
+            });
+        }
+
+        function showOverlay() {
+            horarios.style.display = "none";
+            overlayContainer.style.display = "block";
+            overlayElement.style.display = "block";
+            statusElement.style.display = "block";
+            statusElement.parentNode.style.opacity = "1";
+            statusElement.textContent = "Gerando horários...";
+        }
+
+        function hideOverlay() {
+            overlayContainer.style.display = "none";
+            overlayElement.style.display = "none";
+            statusElement.style.display = "none";
+            statusElement.parentNode.style.opacity = "0";
+            horarios.style.display = "block";
+        }
+
+        function main() {
+            showOverlay();
+            gerarHorarios();
+
+            setTimeout(function () {
+                hideOverlay();
+            }, 3000);
+        }
+
+        main()
+    </script>
+</body>
+
+</html>
