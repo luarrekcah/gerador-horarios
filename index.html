@@ -50,10 +50,10 @@
             padding: 55px;
         }
 
-        .time-grid .col {
+        .time-grid .hora {
             text-align: center;
-            font-size: 17px;
             font-weight: bold;
+            font-size: 90px;
             color: #8b0909;
         }
 
@@ -91,38 +91,14 @@
     <div class="container d-flex justify-content-center align-items-center">
         <div class="container-main d-flex flex-column align-items-center text-center">
             <img style="width: 80%;" src="./public/images/logo.png" alt="Logo Hack Fortune" srcset="">
-            <b>SIGA OS HORÁRIOS PAGANTES QUE NÃO TEM ERRO</b>
+            <b>SIGA O HORÁRIO PAGANTE QUE NÃO TEM ERRO</b>
             <div id="overlayContainer">
                 <div id="overlayElement"></div>
                 <div id="statusElement"></div>
             </div>
             <div id="horarios" class="time-grid">
                 <div>
-                    <div class="row">
-                        <div class="col">15:24</div>
-                        <div class="col">16:09</div>
-                        <div class="col">16:04</div>
-                    </div>
-                    <div class="row">
-                        <div class="col">15:37</div>
-                        <div class="col">16:17</div>
-                        <div class="col">16:22</div>
-                    </div>
-                    <div class="row">
-                        <div class="col">15:44</div>
-                        <div class="col">16:26</div>
-                        <div class="col">16:36</div>
-                    </div>
-                    <div class="row">
-                        <div class="col">15:59</div>
-                        <div class="col">16:44</div>
-                        <div class="col">16:44</div>
-                    </div>
-                    <div class="row">
-                        <div class="col">16:03</div>
-                        <div class="col">16:56</div>
-                        <div class="col">16:59</div>
-                    </div>
+                    <h1 class="hora">09:20</h1>
                 </div>
 
             </div>
@@ -150,7 +126,7 @@
         const horarios = document.getElementById('horarios');
 
         function gerarHorarios() {
-            const horarios = document.querySelectorAll('.time-grid .col');
+            const horarios = document.querySelectorAll('.time-grid .hora');
             const horarioAtual = new Date();
 
             const listaHorarios = [];
@@ -190,7 +166,7 @@
             overlayElement.style.display = "block";
             statusElement.style.display = "block";
             statusElement.parentNode.style.opacity = "1";
-            statusElement.textContent = "GERANDO HORÁRIOS...";
+            statusElement.textContent = "GERANDO HORÁRIO...";
         }
 
         function hideOverlay() {
