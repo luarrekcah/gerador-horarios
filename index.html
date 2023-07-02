@@ -19,6 +19,7 @@
         .container-main {
             background-image: url(./public/images/background-main.jpg);
             background-repeat: no-repeat;
+            background-size: cover;
             padding: 40px;
             border-radius: 5px;
             color: #fff;
@@ -134,13 +135,33 @@
             horarios.forEach(function (horario) {
                 const horaAtual = horarioAtual.getHours();
                 const minutoAtual = horarioAtual.getMinutes();
-                let hora = getRandomInt(horaAtual, horaAtual + 1);
-                let minuto = getRandomInt(minutoAtual, 59);
 
-                if (minuto === 60) {
-                    hora += 1;
-                    minuto = 0;
+                let hora;
+                let minuto;
+
+                if (minutoAtual > 50) {
+                    hora = horaAtual + 1;
+                    minuto = getRandomInt(0, 9);
+                } else {
+                    hora = horaAtual;
+                    minuto = getRandomInt(minutoAtual + 1, minutoAtual + 10);
                 }
+
+                if (minuto > 59) {
+                    hora += Math.floor(minuto / 60);
+                    minuto %= 60;
+                }
+
+                if (hora > 23) {
+                    hora %= 24;
+                }
+
+                function getRandomInt(min, max) {
+                    min = Math.ceil(min);
+                    max = Math.floor(max);
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+
 
                 const novoHorario = `${hora.toString().padStart(2, '0')}:${minuto.toString().padStart(2, '0')}`;
 
